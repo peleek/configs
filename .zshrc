@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/pelek/.oh-my-zsh"
+export ZSH="/home/${USER}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -100,10 +100,18 @@ source $ZSH/oh-my-zsh.sh
 alias resetzsh="source ~/.zshrc"
 bindkey '^ ' autosuggest-accept
 alias uranus="cd ~/Projects/productdesign-nexontis-mair/"
+alias korki="cd ~/Projects/korki"
 alias editzsh="vim ~/.zshrc"
 alias gotoproj="cd ~/Projects/"
 alias gtree="git log --graph --oneline --all"
-alias gp="git push"
+alias gpl="git pull"
+alias gph="git push"
 alias instl="sudo pacman -S"
-alias gcp="git commit -m $1 && git push"
-alias gc="git commit -m"
+alias ggcp="git commit -m \"$1\" && git push" # not working yet
+alias gcm="git commit -m"
+alias gc="git checkout"
+alias byebye="shutdown now"
+alias ys="yarn start"
+alias gadd="git add ."
+alias gl="git log -p"
+
