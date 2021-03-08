@@ -2,7 +2,8 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/${USER}/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
+export NVM_LAZY_LOAD=true
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -50,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -68,7 +69,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,19 +100,16 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias resetzsh="source ~/.zshrc"
 bindkey '^ ' autosuggest-accept
-alias uranus="cd ~/Projects/productdesign-nexontis-mair/"
-alias korki="cd ~/Projects/korki"
+alias uranus="cd ~/wsl2/projects/neo-ui" 
+alias runuranus="cd  ~/wsl2/projects/neo-ui && yarn start:neo-backend"
+alias runapi="cd /mnt/c/Projekty/odata-mock-api && yarn start"
 alias editzsh="vim ~/.zshrc"
-alias gotoproj="cd ~/Projects/"
+alias gotoproj="cd /mnt/c/Projektywq/"
 alias gtree="git log --graph --oneline --all"
-alias gpl="git pull"
-alias gph="git push"
+alias gp="git push"
 alias instl="sudo pacman -S"
-alias ggcp="git commit -m \"$1\" && git push" # not working yet
-alias gcm="git commit -m"
-alias gc="git checkout"
-alias byebye="shutdown now"
-alias ys="yarn start"
-alias gadd="git add ."
-alias gl="git log -p"
-
+alias gcp="git commit -m $1 && git push"
+alias gc="git commit -m"
+alias vimcfg="nvim ~/.config/nvim/init.vim"
+alias cidi="cd"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
