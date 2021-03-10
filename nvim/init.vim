@@ -3,7 +3,7 @@ call plug#begin("~/.vim/plugged")
   Plug 'larsbs/vimterial_dark'
   " Language Client
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+  let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-tsserver', 'coc-eslint']
   " TypeScript Highlighting
   Plug 'leafgarland/typescript-vim'
   Plug 'peitalin/vim-jsx-typescript'
@@ -11,6 +11,9 @@ call plug#begin("~/.vim/plugged")
   " File Explorer with Icons
   Plug 'scrooloose/nerdtree'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'scrooloose/nerdtree-project-plugin'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
   " File Search
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
@@ -34,9 +37,10 @@ let g:NERDTreeIgnore = []
 let g:NERDTreeStatusline = ''
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" Toggle
-nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+autocmd BufWinEnter * silent NERDTreeMirror
 
+" Toggle
+nnoremap <C-s> :w<CR>
 nnoremap <C-p> :FZF<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -48,7 +52,18 @@ nnoremap <C-S-f> :Ag<CR>
 " requires silversearcher-ag
 " used to ignore gitignore files
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
 " open new split panes to right and below
 set splitright
 set splitbelow
@@ -57,6 +72,9 @@ set splitbelow
 tnoremap <Esc> <C-\><C-n>
 " display line numbers by default
 set number
+
+set ignorecase
+set cursorline
 " use alt+hjkl to move between split/vsplit panels
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
@@ -66,6 +84,14 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " start terminal in insert mode
 au BufEnter * if &buftype == 'terminal' | :startinsert | endif
