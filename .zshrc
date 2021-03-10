@@ -4,7 +4,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export NVM_LAZY_LOAD=true
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -100,8 +99,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias resetzsh="source ~/.zshrc"
 bindkey '^ ' autosuggest-accept
-alias uranus="cd ~/wsl2/projects/neo-ui" 
-alias runuranus="cd  ~/wsl2/projects/neo-ui && yarn start:neo-backend"
+alias uranus="cd ~/Projects/neo-ui" 
+alias runuranus="cd  ~/Projects/neo-ui && yarn start:neo-backend"
 alias runapi="cd /mnt/c/Projekty/odata-mock-api && yarn start"
 alias editzsh="vim ~/.zshrc"
 alias gotoproj="cd /mnt/c/Projektywq/"
@@ -112,4 +111,4 @@ alias gcp="git commit -m $1 && git push"
 alias gc="git commit -m"
 alias vimcfg="nvim ~/.config/nvim/init.vim"
 alias cidi="cd"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias updatenvimconfig="bash <(curl -s https://raw.githubusercontent.com/peleek/nvim/stable-snapshot-CoC/utils/install.sh)"
