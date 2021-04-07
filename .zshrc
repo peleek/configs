@@ -114,3 +114,10 @@ alias cidi="cd"
 alias updatenvimconfig="bash <(curl -s https://raw.githubusercontent.com/peleek/nvim/stable-snapshot-CoC/utils/install.sh)"
 alias zshtoremote="cp ~/.zshrc ~/configs && cd ~/configs && git add ."
 alias updatezsh="cd ~/configs && git pull && cp ~/configs/.zshrc ~/.zhsrc"
+alias ggdev="git checkout develop && git pull"
+alias ggp="git push"
+alias ggc="git commit -m"
+alias ggu="git checkout develop && git pull && git checkout @{-1} && git merge develop"
+export PATH=/home/$USER/.config/nvcode/utils/bin:$PATH
+
+eval $(thefuck --alias)
